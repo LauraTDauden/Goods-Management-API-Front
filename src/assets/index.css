@@ -1,0 +1,88 @@
+
+  body {
+    background-color: #3e4452;
+    color:white;
+    font-family: Helvetica, Arial, sans-serif;
+    padding: 60px;
+  }
+ 
+  nav {
+    background-color: rgb(24, 94, 151);
+    border-radius: 10px;
+    padding: 1em; 
+    margin-bottom: 1em;  
+    min-width: 160px;
+  }
+
+  .nav{  
+    background-color: rgb(24, 94, 151);
+    color:white;
+    display: inline-block;
+    font-size: 1.3em;
+    padding: 1em;
+    text-decoration: none;   
+  }
+  .nav:hover{
+    background-color: rgb(33, 40, 54);
+    border-radius: 5px;
+    color: white;
+  }
+
+  .nav.user{
+    color:rgb(233, 235, 158);
+    text-align-last: right;
+  }
+
+  h2{
+    color: #efeffa;
+    margin: 1em;
+    text-align: center;
+  }
+
+  .login{
+    background-color: rgb(24, 94, 151);
+    border-radius: 15px;
+    color:white;
+    display:block;
+    max-width: 60%;
+    margin: auto;
+    margin-top: 3em;
+    max-width: 500px;
+    padding: 2em 2em;
+    text-align: center;  
+  }
+
+  .login h3{
+    background-color: rgb(24, 94, 151);
+    margin-bottom: 0.5em;
+  }
+
+  .login label {
+    background-color: rgb(24, 94, 151);
+  }
+  .login input {
+    background-color: rgb(212, 214, 236);
+    border-radius: 15px;
+    color:black;   
+    width: 70%;
+  }
+
+  button{
+    margin-top: 1em;
+    width: 40%;
+  }
+  .login-c{
+    background-color: rgb(24, 94, 151);
+    margin-bottom: 1em;
+  }
+
+  .welcome{
+    margin-left: 2em;
+
+  }
+
+  .welcome button {
+    min-width: 200px;
+    max-width: 300px;
+  }
+
