@@ -8,7 +8,14 @@ export const getItems = async () => {
         return {
             id: item.item_id,
             code: item.item_code,
-            description: item.description
+            description: item.description,
+            state: item.state,
+            price: item.price,
+            creation_date: item.creation_date,
+            creator: item.creator.username,
+            suppliers: item.suppliers,
+            price_reductions: item.price_reductions
+            
         }
 
     })

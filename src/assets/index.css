@@ -9,6 +9,7 @@
   nav {
     background-color: rgb(24, 94, 151);
     border-radius: 10px;
+    box-shadow: 10px 10px 5px rgb(55, 65, 68);
     padding: 1em; 
     margin-bottom: 1em;  
     min-width: 160px;
@@ -42,6 +43,7 @@
   .login{
     background-color: rgb(24, 94, 151);
     border-radius: 15px;
+    box-shadow: 10px 10px 5px rgb(55, 65, 68);
     color:white;
     display:block;
     max-width: 60%;

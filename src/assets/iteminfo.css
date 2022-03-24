@@ -1,0 +1,19 @@
+.card{
+    background-color: rgb(201, 221, 238) !important;
+    border-radius: 10px !important;
+    box-shadow: 10px 10px 5px rgb(55, 65, 68);
+    color:rgb(56, 53, 131);
+    font-size: 1.3em;
+    font-weight:700;
+    height: 450px;
+    margin-top: 1em;
+    margin-right: 1em;
+    padding: 1.2em;
+    width:250px;
+    
+
+}
+.col{
+    display: inline-block;
+}
+

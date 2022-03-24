@@ -25,8 +25,7 @@ export const ItemCard = ({
                     <p className="card-text">Price: {price.toFixed(2)} €</p>
                     <p className="card-text">{creation_date}</p>
                     <p className="card-text">{creator.username}</p>
-                    <Link to={`/products/${id}`}
-                    item ={item} >
+                    <Link to={`/products/${id}`}>
                         More information
                             </Link>
                 </div>
