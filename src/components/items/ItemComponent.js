@@ -1,18 +1,21 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { ItemContext, ItemDispatchContext } from '../../context/ItemContext';
+import { Link } from 'react-router-dom';
+import {ItemDispatchContext } from '../../context/ItemContext';
 import { useFetchItems } from '../../hooks/useFetchItems';
 import { ToggleState } from '../utils/ToggleState';
 import { ItemCard } from './ItemCard';
 
+import '../../assets/index.css';
+
 
 export const ItemComponent = () => {
 
-    const {data: items, loading} = useFetchItems();
+    const { data: items, loading } = useFetchItems();
 
     const [selected, setSelected] = useState(true);
 
     const setItemList = useContext(ItemDispatchContext);
-    const itemList = useContext(ItemContext);
+    //const itemList = useContext(ItemContext);
     useEffect(() => {
         setItemList(items);
     })
@@ -28,17 +31,37 @@ export const ItemComponent = () => {
                 toggle={toggle}
             />
             {loading && <p>Loading...</p>}
-            {/*console.log(itemList)*/}
             {
-                items.map(item=>(
+                selected &&
+                items.map(item => (
+                    item.state == 'ACTIVE' &&
                     <ItemCard
-                    key = {item.id}
-                    {...item}
+                        key={item.id}
+                        {...item}
                     />
-                   
+
                 ))
+
             }
-            
+            {
+                !selected &&
+                items.map(item => (
+                    item.state == 'DISCONTINUED' &&
+                    <ItemCard
+                        key={item.id}
+                        {...item}
+                    />
+
+                ))
+
+            }
+
+            <Link to="/products/new"
+                className="btn btn-primary createbutton"
+            >
+                Add new item
+                </Link>
+
         </div>
     )
 }

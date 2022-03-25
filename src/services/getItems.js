@@ -19,6 +19,5 @@ export const getItems = async () => {
         }
 
     })
-
     return items;
 }

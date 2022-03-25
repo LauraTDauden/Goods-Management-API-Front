@@ -1,0 +1,29 @@
+{
+    "item_id": "",
+    "item_code": "",
+    "description": "",
+    "price": "",
+    "state": "ACTIVE",
+    "suppliers": [
+        {
+            "supplier_id": "",
+            "name": "",
+            "country": ""
+        }
+    ],
+    "price_reductions": [
+        {
+            "priceReduction_id": "",
+            "reduced_price": "",
+            "start_date": "",
+            "end_date": ""
+        }
+    ],
+    "creation_date": "",
+    "creator": {
+        "user_id": "",
+        "username": "",
+        "password": "",
+        "role": ""
+    }
+}
