@@ -1,0 +1,75 @@
+.createlogin{
+    margin: 1.2em;
+    width: 400px;
+}
+h4 {
+    margin: 0.5em;
+}
+
+form label {
+    display:table-cell;
+    margin: 1em;
+    font-size:1.2em;
+    padding-right: 1em;
+}
+
+form input {
+    display:table-cell;
+    border-radius: 8px;
+    padding-left: 1em;
+}
+form{
+    display:table;
+    margin-top: 2.2em;
+}
+
+form p{
+    display: table-row; 
+}
+
+form textarea{
+    border-radius: 8px;
+    padding-left: 1em;
+    width: 220px;
+}
+
+.itemcreationdiv{
+    background-color: rgb(24, 94, 151);
+    border-radius: 10px;
+    box-shadow: 10px 10px 5px rgb(55, 65, 68);
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: 2.2em;
+    min-width: 500px !important;
+    padding: 2em;
+}
+
+.pdesc{
+    vertical-align: top !important;
+}
+
+.radio {
+    display: inline-block !important;
+}
+
+.btncreate {
+    width: 140px;
+}
+
+.invalid{
+    position: relative;
+    animation: shake .1s linear;
+    animation-iteration-count: 3;
+    border-color: #691b1b;
+    background-color: #ffdddd;
+  border-width: 3px;
+}
+
+@keyframes shake {
+    0% { left: -5px; }
+    100% { right: -5px; }
+}
+
+form small {
+    padding-left: 1em;
+    color:rgb(219, 116, 138);
+}

@@ -5,15 +5,25 @@
     color:rgb(56, 53, 131);
     font-size: 1.3em;
     font-weight:700;
-    height: 450px;
+    height: 500px;
     margin-top: 1em;
     margin-right: 1em;
+    overflow:hidden;
     padding: 1.2em;
-    width:250px;
+    width:300px;
     
 
 }
 .col{
     display: inline-block;
 }
+
+.list-group-item{
+    background-color: rgb(201, 221, 238) !important;
+}
+
+span{
+    font-weight:500 !important;
+}
+
 

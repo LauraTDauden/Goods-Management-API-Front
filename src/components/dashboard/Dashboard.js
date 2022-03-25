@@ -5,6 +5,7 @@ import { ItemComponent } from "../items/ItemComponent";
 import { NavBar } from "./NavBar";
 import { Home } from "../Home";
 import { ItemScreen } from "../items/ItemScreen";
+import { ItemCreation } from "../items/ItemCreation";
 
 export default function Dashboard() {
  
@@ -17,6 +18,7 @@ export default function Dashboard() {
         <Route path="/login" element ={<Login/>} />
         <Route path="/products" element ={<ItemComponent/>} />
         <Route path="/products/:itemId" element ={<ItemScreen/>} />
+        <Route path="/products/new" element ={<ItemCreation/>} />
         
       </Routes>
     </div>
