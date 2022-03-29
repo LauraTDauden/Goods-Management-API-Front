@@ -67,8 +67,6 @@ export const ItemEdit = () => {
         
     });
 
-
-
     const [addSupplier, setAddSupplier] = useState(false);
     const [addPrice, setAddPrice] = useState(false);
 
