@@ -1,12 +1,11 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useRef, useState } from 'react'
 import { Link } from 'react-router-dom';
 import { UserContext } from '../../context/UserContext';
 import { useForm } from '../../hooks/useForm';
 import '../../assets/createitem.css';
 import { validateItem } from '../../validators/validateItem';
 import { ItemContext } from '../../context/ItemContext';
-import { postItem } from '../../services/postItem';
-import { itemFormat } from '../../validators/itemFormat';
+import { postItem } from '../../services/itemService/postItem';
 
 export const ItemCreation = () => {
 
@@ -16,7 +15,7 @@ export const ItemCreation = () => {
     const [formData, handleInputChange, reset] = useForm({
         "item_code": "",
         "description": "",
-        "price": "",
+        "price": 0.0.toFixed(2),
         "state": "ACTIVE",
         "creation_date": "",
         "creator": {
@@ -29,35 +28,44 @@ export const ItemCreation = () => {
         code_number: false,
         code_unique: false,
         code: true,
-        description: true
+        description: true,
+        price: true
     });
 
-    let validation;
+    const created = useRef(false);
 
+    let validation;
     const codeError = () => {
-        if (!valid.code_number) 
-            return "Incorrect code format."        
-        else if (!valid.code_unique) 
-            return "The introduced code already belongs to another item."       
+        if (!valid.code_number) {
+            return "Incorrect code format.";
+        } else if (!valid.code_unique) {
+            return "The introduced code already belongs to another item.";
+        }
     }
 
     const descError = "A description is required."
 
+    const priceError = "Incorrect price format."
+
     const validate = () => {
         validation = validateItem(itemList, formData);
         setValid(validation);
-        //itemFormat(formData);
     }
 
     const handleSubmit = (e) => {
         e.preventDefault();
         validate();
-        if (validation.valid)
-            console.log("VALID!!!!")
-        console.log(formData);
-        postItem(e, formData);
+        if (validation.valid) {
+            console.log("VALID!");
+            console.log(formData);
+            postItem(formData, created);
+            if (created) {
+                reset();
+                console.log("CREATED!");
+                created.current = false;
+            }
+        }
     }
-
     return (
         <div>
             {userDetails.authorized ?
@@ -102,6 +110,7 @@ export const ItemCreation = () => {
                                 value={formData.price}
                                 name="price"
                             ></input>
+                            {!valid.price && <small>{priceError}</small>}
                         </p>
                         <br />
                         <p>

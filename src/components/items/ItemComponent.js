@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import {ItemDispatchContext } from '../../context/ItemContext';
+import { ItemDispatchContext } from '../../context/ItemContext';
 import { useFetchItems } from '../../hooks/useFetchItems';
 import { ToggleState } from '../utils/ToggleState';
 import { ItemCard } from './ItemCard';
@@ -26,10 +26,17 @@ export const ItemComponent = () => {
 
     return (
         <div>
-            <ToggleState
-                selected={selected}
-                toggle={toggle}
-            />
+            <div className="top-container">
+                <ToggleState
+                    selected={selected}
+                    toggle={toggle}
+                />
+                <Link to="/products/new"
+                    className="btn btn-primary createbutton"
+                >
+                    Add new item
+                </Link>
+            </div>
             {loading && <p>Loading...</p>}
             {
                 selected &&
@@ -39,9 +46,7 @@ export const ItemComponent = () => {
                         key={item.id}
                         {...item}
                     />
-
                 ))
-
             }
             {
                 !selected &&
@@ -51,17 +56,7 @@ export const ItemComponent = () => {
                         key={item.id}
                         {...item}
                     />
-
                 ))
-
             }
-
-            <Link to="/products/new"
-                className="btn btn-primary createbutton"
-            >
-                Add new item
-                </Link>
-
         </div>
-    )
-}
+    )}

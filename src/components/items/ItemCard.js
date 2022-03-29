@@ -14,14 +14,14 @@ export const ItemCard = ({
     creator
 }) => {
 
-    const date = `${new Date(creation_date).getDate()}/${new Date(creation_date).getMonth()+1}/${new Date(creation_date).getFullYear()}`;
+    const date = `${new Date(creation_date).getDate()}/${new Date(creation_date).getMonth() + 1}/${new Date(creation_date).getFullYear()}`;
     return (
         <div className="col">
             <div className="card">
                 <div className="card-body">
                     <p className="card-text"><span>Item Code:</span> {code}</p>
                     <p className="card-text"><span>Description: </span>{description}</p>
-                    <hr/>
+                    <hr />
                     <p className="card-text"><span>State:</span> {state}</p>
                     <p className="card-text"><span>Price:</span> {price.toFixed(2)} €</p>
                     <p className="card-text"><span>Creation date: </span>{date}</p>
@@ -29,6 +29,12 @@ export const ItemCard = ({
                     <Link to={`/products/${id}`}>
                         More information
                             </Link>
+                    <p></p>
+
+                    {state === 'ACTIVE' &&
+                        <Link to={`/products/edit/${id}`} className="btn btn-primary editbtn">
+                            Edit
+                            </Link>}
                 </div>
             </div>
         </div>

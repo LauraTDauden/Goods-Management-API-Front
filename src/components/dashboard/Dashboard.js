@@ -6,6 +6,7 @@ import { NavBar } from "./NavBar";
 import { Home } from "../Home";
 import { ItemScreen } from "../items/ItemScreen";
 import { ItemCreation } from "../items/ItemCreation";
+import { ItemEdit } from "../items/ItemEdit";
 
 export default function Dashboard() {
  
@@ -18,6 +19,7 @@ export default function Dashboard() {
         <Route path="/login" element ={<Login/>} />
         <Route path="/products" element ={<ItemComponent/>} />
         <Route path="/products/:itemId" element ={<ItemScreen/>} />
+        <Route path="/products/edit/:itemId" element ={<ItemEdit/>} />
         <Route path="/products/new" element ={<ItemCreation/>} />
         
       </Routes>
