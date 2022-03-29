@@ -1,5 +1,7 @@
-export const postItem = (e, formData) => {
-    fetch('http://localhost:8080/items/', {
+import {isCreated} from '../../components/items/ItemCreation';
+
+export const postItem = (formData, isCreated) => {
+    fetch('http://localhost:8080/items', {
         method: 'POST',
         headers: {
             'Accept': 'application/json, text/plain, */*',
@@ -8,6 +10,8 @@ export const postItem = (e, formData) => {
         body: JSON.stringify(formData),
     }).then(res => res.json())
         .then(res => {
-            console.log(res);
+            if (res == "1"){
+                isCreated.current = true;
+            }
         });
 }
