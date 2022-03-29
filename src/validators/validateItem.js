@@ -1,5 +1,5 @@
 
-import { getItemByCode } from "../services/getItemByCode";
+import { getItemByCode } from "../services/itemService/getItemByCode";
 
 export const validateItem = (itemList, formData) => {
 
@@ -8,7 +8,8 @@ export const validateItem = (itemList, formData) => {
         code_number: false,
         code_unique: true,
         code: false,
-        description: false
+        description: false,
+        price: false
     }
 
     
@@ -23,10 +24,16 @@ export const validateItem = (itemList, formData) => {
         if (formData.item_code && validation.code_number && validation.code_unique){
         validation.code = true;}
             
-    if (formData.description)
+    if (formData.description){
         validation.description = true;
+    }
+        
+
+    if (formData.price > 0){
+        validation.price = true;
+    }
     
-    if(validation.code_number && validation.code_unique && validation.code && validation.description)
+    if(validation.code_number && validation.code_unique && validation.code && validation.description && validation.price)
         validation.valid = true;
 
     return validation;
