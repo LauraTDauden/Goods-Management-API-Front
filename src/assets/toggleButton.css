@@ -37,4 +37,15 @@
     background-color: #707070;
     left: 2px;
   }
+
+  .supplier{
+    margin-top: 1em;
+    height: 50px;
+  }
+
+  .newSupplier{
+    background-color: #0962c7;
+    left: 2px;
+  }
+
   

@@ -26,4 +26,63 @@ span{
     font-weight:500 !important;
 }
 
+.editbtn {
+    color:white;
+    text-decoration: none;
+}
+
+.deactbtn{
+    margin-left: 20px;
+    width: 200px;
+}
+
+.editinput{
+    border-radius: 10px;
+    display: table-row; 
+    margin-left: 1em;
+    padding-left: 1em;
+}
+
+.addbtn{
+    margin-bottom: 0.5em;
+    width: 200px;
+}
+
+.sendbtn{
+    margin-top: 1.6em;
+}
+
+
+.editpricelabel {
+    margin-right: 60px;
+}
+.editdesclabel {
+    margin-right: 10px;
+}
+
+.topform b {
+    padding-right: 3px;
+}
+.topform li {
+    padding-bottom: 2
+}
+
+.newbtn{
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.supplierFormName {
+    padding-right: 35px;
+}
+
+.supplierform{
+    margin-top: 1em;
+}
+
+.btncreate {
+    margin-top: 1em;
+}
+
+
 

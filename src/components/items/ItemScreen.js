@@ -1,7 +1,7 @@
 import React, { useContext} from 'react';
 import { Navigate, useParams, useNavigate } from 'react-router-dom';
 import { ItemContext } from '../../context/ItemContext';
-import { getItemById } from '../../services/getItemById';
+import { getItemById } from '../../services/itemService/getItemById';
 import '../../assets/iteminfo.css';
 
 export const ItemScreen = () => {
