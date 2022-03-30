@@ -3,25 +3,27 @@ import { Navigate, useParams } from 'react-router';
 import { ItemContext } from '../../context/ItemContext';
 import { useForm } from '../../hooks/useForm';
 import { getItemById } from '../../services/itemService/getItemById';
-import '../../assets/iteminfo.css';
 import { NewSupplier } from './NewSupplier';
 import { NewPrice } from './NewPrice';
+
+import '../../assets/iteminfo.css';
 
 export const ItemEdit = () => {
     const { itemId } = useParams();
     const itemList = useContext(ItemContext);
 
-    const currentItem = useRef({});
-
-
     if (!itemList) return <Navigate to='/products' />
     let item = getItemById(itemId, itemList)
-    useEffect(() => {
 
-        item = getItemById(itemId, itemList)
-        currentItem.current = item;
-    }, [formData]);
+    useEffect(() => {
+        let item = getItemById(itemId, itemList)
+    }, []);
+
     if (!item) return <Navigate to='/products' />
+
+    useEffect(() => {
+        let item = getItemById(itemId, itemList)
+    }, [itemData]);
 
     const {
         id,
@@ -35,9 +37,10 @@ export const ItemEdit = () => {
         creator
     } = item;
 
-    //currentItem.current = item;
-
     const date = `${new Date(creation_date).getDate()}/${new Date(creation_date).getMonth() + 1}/${new Date(creation_date).getFullYear()}`;
+
+    const [addSupplier, setAddSupplier] = useState(false);
+    const [addPrice, setAddPrice] = useState(false);
 
     const [formData, handleInputChange, reset] = useForm({
         "item_code": code,
@@ -51,6 +54,7 @@ export const ItemEdit = () => {
         "suppliers": 
             suppliers.map(supplier => (
                 {
+                    "supplier_id": supplier.supplier_id,
                     "name": supplier.name,
                     "country": supplier.country
                 }
@@ -67,8 +71,7 @@ export const ItemEdit = () => {
         
     });
 
-    const [addSupplier, setAddSupplier] = useState(false);
-    const [addPrice, setAddPrice] = useState(false);
+    const [itemData, setItemData] = useState(formData);
 
     const toggleSupplier = () => {
         setAddSupplier(!addSupplier);
@@ -135,10 +138,11 @@ export const ItemEdit = () => {
                         onClick={toggleSupplier}
                     >+ Add supplier</button>
                     
+    {/*NEW SUPPLIER COMPONENT*/}
                     {
                         addSupplier && <NewSupplier
-                            formData={formData}
-                            handleInputChange={handleInputChange}
+                            itemData = {itemData}
+                            setItemData = {setItemData}
                         />
                     }
                     <hr/>
@@ -159,6 +163,7 @@ export const ItemEdit = () => {
                         className="btn btn-success addbtn"
                         onClick={togglePrice}
                     >+ Add price reduction</button>
+    {/*NEW PRICE COMPONENT*/}
                     {
                         addPrice && <NewPrice
                             formData={formData}

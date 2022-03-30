@@ -1,20 +1,24 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { useFetchSuppliers } from '../../hooks/useFetchSuppliers';
-import '../../assets/iteminfo.css';
 import { ToggleAddSupplier } from '../utils/ToggleAddSupplier';
 import { useForm } from '../../hooks/useForm';
+import { useGetSupplierByName } from '../../services/supplierService/useGetSupplierByName';
+import '../../assets/iteminfo.css';
+import { validateSupplier } from '../../validators/validateSupplier';
 
-export const NewSupplier = ({ formData }, { handleInputChange }) => {
+export const NewSupplier = ({ itemData, setItemData }) => {
 
     const { data: suppliers, loading } = useFetchSuppliers();
 
+    //true = existing supplier // false = new supplier
     const [selected, setSelected] = useState(true);
 
     const [SupplierData, handleSupplierChange, reset] = useForm({
+        "id": 0,
         "name": "",
         "country": ""
     })
-
+    const [selectedSupplier, setSelectedSupplier] = useState("none");
 
     const toggle = () => {
         setSelected(!selected);
@@ -22,16 +26,61 @@ export const NewSupplier = ({ formData }, { handleInputChange }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(selectedSupplier)
-        console.log(SupplierData)
 
+        let newAssociated = validate();
+        //console.log(newAssociated);
+        console.log(itemData);
+        setItemData({...itemData}, itemData.suppliers.push(newAssociated));
+        console.log(itemData);
+        reset();
     }
 
     const handleOption = (e) => {
         setSelectedSupplier(e.target.value);
     }
 
-    const [selectedSupplier, setSelectedSupplier] = useState("none");
+
+    //VALIDATIONS
+    const verifyOldSupplier = () => {
+        let found = false;
+        let sup = itemData.suppliers
+        sup.map(supplier => {
+            if (supplier.name.toLowerCase() == selectedSupplier.toLowerCase()) {
+                found = true;
+            }
+        })
+        return found;
+    }
+    const verifyNewSupplier = () => {
+        let found = false;
+        let sup = itemData.suppliers
+        sup.map(supplier => {
+            if (supplier.name.toLowerCase() == SupplierData.name.toLowerCase()) {
+                found = true;
+            }
+        })
+        return found;
+    }
+
+    const validate = () => {
+
+        if ((selected && verifyOldSupplier()) || (!selected && verifyNewSupplier())) {
+            console.log("That supplier is already associated to the item.");
+            return false;
+        }
+        if (selected) {
+            return useGetSupplierByName(selectedSupplier, suppliers);
+        } else if (!selected) {
+            if (!validateSupplier(SupplierData)){
+                return "Incomplete supplier data"
+            }
+            return SupplierData;
+        }
+
+        //console.log(suppliers)
+        //console.log("Old supplier" + oldSupplier);
+    }
+
     return (
         <div>
             <h4>Associate supplier</h4>
@@ -41,22 +90,22 @@ export const NewSupplier = ({ formData }, { handleInputChange }) => {
                     toggle={toggle}
                 />
             </div>
-            <form 
-            className = "supplierform"
-            onSubmit={handleSubmit}>
+            <form
+                className="supplierform"
+                onSubmit={handleSubmit}>
                 {selected &&
                     <div>
                         <select
-                        onChange = {handleOption}
-                        value = {selectedSupplier}
+                            onChange={handleOption}
+                            value={selectedSupplier}
                         >
                             <option default value="none">Associate existing supplier</option>
                             {
                                 suppliers.map(supplier => (
                                     <option
                                         key={supplier.name}
-                                        value={supplier.name}                                      
-                                        > 
+                                        value={supplier.name}
+                                    >
                                         {supplier.name}
                                     </option>
                                 ))
@@ -95,7 +144,7 @@ export const NewSupplier = ({ formData }, { handleInputChange }) => {
 
                 <button className="btn btn-primary btncreate"
                     type="submit"
-                    onClick={(e) =>handleSubmit(e)}
+                    onClick={(e) => handleSubmit(e)}
                 >Add</button>
             </form>
         </div>
