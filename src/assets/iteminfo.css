@@ -84,5 +84,19 @@ span{
     margin-top: 1em;
 }
 
+.datefield {
+    padding-right: 60px;
+}
+.end {
+    padding-right: 65px;
+
+}
+
+.reason {
+    padding-right: 1em;
+    padding-left: 1em;
+}
+
+
 
 
