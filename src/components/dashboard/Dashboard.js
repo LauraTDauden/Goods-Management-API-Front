@@ -7,6 +7,9 @@ import { Home } from "../Home";
 import { ItemScreen } from "../items/ItemScreen";
 import { ItemCreation } from "../items/ItemCreation";
 import { ItemEdit } from "../items/ItemEdit";
+import { ItemUpdatedScreen } from "../items/ItemUpdatedScreen";
+import { ItemDeactivatedScreen } from "../items/ItemDeactivatedScreen";
+import { AdminScreen } from "../admin/AdminScreen";
 
 export default function Dashboard() {
  
@@ -21,6 +24,9 @@ export default function Dashboard() {
         <Route path="/products/:itemId" element ={<ItemScreen/>} />
         <Route path="/products/edit/:itemId" element ={<ItemEdit/>} />
         <Route path="/products/new" element ={<ItemCreation/>} />
+        <Route path="/products/updated" element ={<ItemUpdatedScreen/>} />
+        <Route path="/products/deactivated" element ={<ItemDeactivatedScreen/>} />
+        <Route path="/admin" element ={<AdminScreen/>} />
         
       </Routes>
     </div>

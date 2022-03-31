@@ -1,0 +1,28 @@
+.btnadmin{
+    margin: 1em;
+}
+
+.createuser{
+    border-radius: 5px;
+    margin: 1em;
+    padding-left: 2em;
+    padding-top: 1em;
+    padding-bottom: 2em;
+    outline: 2px solid rgb(115, 115, 206);
+    
+}
+
+.creatediv{
+    margin-bottom: 1em;
+}
+
+.createsection{
+    display:inline-table;
+    margin-top: 1em;
+}
+.createsection input{
+    margin-right: 1em;
+}
+.createbtn{
+    margin-top: 1em;
+}

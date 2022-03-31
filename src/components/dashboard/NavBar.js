@@ -40,7 +40,7 @@ export const NavBar = () => {
             {userDetails.authorized &&
                 <NavLink
                     className = "nav user"
-                    to = {"/login"}
+                    to = {"/admin"}
                     key = "login"
                 ><p>{userDetails.username}</p></NavLink>}
         </nav>
