@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useFetchSuppliers } from '../../hooks/useFetchSuppliers';
 import { ToggleAddSupplier } from '../utils/ToggleAddSupplier';
 import { useForm } from '../../hooks/useForm';
@@ -6,15 +6,15 @@ import { useGetSupplierByName } from '../../services/supplierService/useGetSuppl
 import '../../assets/iteminfo.css';
 import { validateSupplier } from '../../validators/validateSupplier';
 
-export const NewSupplier = ({ itemData, setItemData }) => {
+export const NewSupplier = ({ itemData, setItemData, setAddSupplier }) => {
 
-    const { data: suppliers, loading } = useFetchSuppliers();
+    const { data: suppliers } = useFetchSuppliers();
 
     //true = existing supplier // false = new supplier
     const [selected, setSelected] = useState(true);
 
     const [SupplierData, handleSupplierChange, reset] = useForm({
-        "id": 0,
+        "supplier_id": 0,
         "name": "",
         "country": ""
     })
@@ -26,13 +26,12 @@ export const NewSupplier = ({ itemData, setItemData }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-
         let newAssociated = validate();
-        //console.log(newAssociated);
-        console.log(itemData);
-        setItemData({...itemData}, itemData.suppliers.push(newAssociated));
-        console.log(itemData);
-        reset();
+        if (newAssociated != false) {
+            setItemData({ ...itemData }, itemData.suppliers.push(newAssociated));
+            reset();
+            setAddSupplier(false);
+        }
     }
 
     const handleOption = (e) => {
@@ -69,16 +68,14 @@ export const NewSupplier = ({ itemData, setItemData }) => {
             return false;
         }
         if (selected) {
+            console.log(suppliers)
             return useGetSupplierByName(selectedSupplier, suppliers);
         } else if (!selected) {
-            if (!validateSupplier(SupplierData)){
+            if (!validateSupplier(SupplierData)) {
                 return "Incomplete supplier data"
             }
             return SupplierData;
         }
-
-        //console.log(suppliers)
-        //console.log("Old supplier" + oldSupplier);
     }
 
     return (
@@ -113,7 +110,6 @@ export const NewSupplier = ({ itemData, setItemData }) => {
                         </select>
                         <br />
                     </div>
-
                 }
 
                 {!selected &&
