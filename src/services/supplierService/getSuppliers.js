@@ -6,7 +6,7 @@ export const getSuppliers = async () => {
 
     const items = data.map(supplier => {
         return {
-            id: supplier.supplier_id,
+            supplier_id: supplier.supplier_id,
             name: supplier.name,
             country: supplier.country      
         }
