@@ -1,14 +1,21 @@
-import React from 'react'
+import React, { useRef } from 'react'
+import { validateUser } from '../../validators/validateUser';
+import {postUser} from '../../services/userService/postUser';
 
-export const UserCreation = ({ userData, handleInputChange, setButton}) => {
+export const UserCreation = ({ userData, handleInputChange, setButton, allUsers }) => {
+
+    const isCreated = useRef(false);
 
     const handleCreate = (e) => {
         e.preventDefault();
-        //postUser(userData, created);
-        console.log(userData)
-        // if (created) {
-        //     console.log("Created!")
-        // }
+        if (validateUser(userData, allUsers)) {
+            postUser(userData, isCreated);
+            console.log(userData)
+        }
+        if (isCreated) {
+           console.log("Created!");        
+           setButton(0);
+         }
     }
 
     return (
@@ -54,7 +61,7 @@ export const UserCreation = ({ userData, handleInputChange, setButton}) => {
                     <label htmlFor="admin-role">Admin </label>
                 </section>
                 <button className="btn btn-primary createbtn"
-                        onClick = {handleCreate}
+                    onClick={handleCreate}
                 >Create</button>
             </form>
         </div>

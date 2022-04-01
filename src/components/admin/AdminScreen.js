@@ -1,17 +1,16 @@
 import React, { useContext, useEffect, useRef, useState } from 'react'
-import { Navigate } from 'react-router';
 import { UserContext } from '../../context/UserContext';
 import { useForm } from '../../hooks/useForm';
 import '../../assets/admin.css';
-import { postUser } from '../../services/userService/postUser';
 import { UserCreation } from './UserCreation';
+import { useFetchUsers } from '../../hooks/useFetchUsers';
+import { ListUsers } from './ListUsers';
 
 export const AdminScreen = () => {
     const userDetails = useContext(UserContext);
     const authorized = userDetails.authorized && userDetails.username === 'admin';
     //if (!authorized) return <Navigate to='/login' />
 
-    const created = useRef(false);
     const [userData, handleInputChange, reset] = useForm({
         "username": "",
         "password": "",
@@ -19,8 +18,21 @@ export const AdminScreen = () => {
     });
     const [button, setButton] = useState(0);
 
+    const [allUsers, setAllUsers] = useState();
+    const { data: users, loading } = useFetchUsers();
+
+    const usersRef = useRef({});
+
+    useEffect(() => {
+        setAllUsers(users);
+    })
+
     const handleCreateBtn = (e) => {
         setButton(1);
+    }
+
+    const handleListBtn = (e) => {
+        setButton(2);
     }
 
     return (
@@ -34,11 +46,17 @@ export const AdminScreen = () => {
                 userData={userData}
                 handleInputChange={handleInputChange}
                 setButton={setButton}
+                allUsers = {allUsers}
             />}
 
-            <button className="btn btn-danger btnadmin"> Delete user </button>
-
-            <button className="btn btn-success btnadmin"> List users </button>
+            <button className="btn btn-success btnadmin"
+            onClick={handleListBtn}
+            > List users </button>
+            {
+                button == 2 && <ListUsers
+                allUsers = {allUsers}
+                />
+            }
         </div>
     )
 }
