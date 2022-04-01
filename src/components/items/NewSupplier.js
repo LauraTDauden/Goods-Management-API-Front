@@ -38,7 +38,6 @@ export const NewSupplier = ({ itemData, setItemData, setAddSupplier }) => {
         setSelectedSupplier(e.target.value);
     }
 
-
     //VALIDATIONS
     const verifyOldSupplier = () => {
         let found = false;
@@ -111,7 +110,6 @@ export const NewSupplier = ({ itemData, setItemData, setAddSupplier }) => {
                         <br />
                     </div>
                 }
-
                 {!selected &&
                     <div>
                         <p>
@@ -137,7 +135,6 @@ export const NewSupplier = ({ itemData, setItemData, setAddSupplier }) => {
                         </p>
                         <br />
                     </div>}
-
                 <button className="btn btn-primary btncreate"
                     type="submit"
                     onClick={(e) => handleSubmit(e)}

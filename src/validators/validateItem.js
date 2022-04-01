@@ -12,7 +12,6 @@ export const validateItem = (itemList, formData) => {
         price: false
     }
 
-    
         if (getItemByCode(formData.item_code, itemList)){
             validation.code_unique = false;
         }
@@ -28,7 +27,6 @@ export const validateItem = (itemList, formData) => {
         validation.description = true;
     }
         
-
     if (formData.price > 0){
         validation.price = true;
     }

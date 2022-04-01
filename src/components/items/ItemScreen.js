@@ -7,11 +7,8 @@ import '../../assets/iteminfo.css';
 export const ItemScreen = () => {
 
     const { itemId } = useParams();
-
     const itemList = useContext(ItemContext);
 
-
- 
  const navigate = useNavigate();
     const handleReturn = () => {
         navigate(-1);
@@ -59,16 +56,12 @@ export const ItemScreen = () => {
                             <li className="list-group-item"><b>Country:</b> {supplier.country}</li>
                             <p></p>
                         </ul>
-
                     ))
                 }
-
                 <h5 className="mt-3">Price reductions</h5>
-                {
-                    
+                {                  
                     price_reductions.map(prices => 
-                    
-                        
+                                           
                         <ul className="list-group list-group-flush"
                             key={prices.priceReduction_id}>
                             <li className="list-group-item"><b>Reduced price:</b> {prices.reduced_price.toFixed(2) + "€"}</li>
@@ -76,21 +69,16 @@ export const ItemScreen = () => {
                             <li className="list-group-item"><b>End date:</b> {`${new Date(prices.start_date).getDate()}/${new Date(prices.start_date).getMonth()+1}/${new Date(prices.start_date).getFullYear()}`}</li>
                             <p></p>
                         </ul>
-                        
-
                     )
                 }
                 </div>
                 <button
                     className="btn btn-outline-info"
                     onClick={handleReturn}
-
                 >
                     Return
                 </button>
-
             </div>
-
         </div>
     )
 }

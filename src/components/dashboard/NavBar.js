@@ -5,7 +5,6 @@ import { UserContext } from '../../context/UserContext';
 export const NavBar = () => {
 
     const userDetails = useContext(UserContext);
-
     const routesList = [
         {
             path: '/',
@@ -24,7 +23,6 @@ export const NavBar = () => {
         },
     ]
 
-
     return (
         <nav>
             {
@@ -35,7 +33,6 @@ export const NavBar = () => {
                     >{route.title}</NavLink>
                 )
                 )
-
             }
             {userDetails.authorized &&
                 <NavLink

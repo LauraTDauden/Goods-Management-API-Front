@@ -5,11 +5,12 @@ import '../../assets/admin.css';
 import { UserCreation } from './UserCreation';
 import { useFetchUsers } from '../../hooks/useFetchUsers';
 import { ListUsers } from './ListUsers';
+import { Navigate } from 'react-router';
 
 export const AdminScreen = () => {
     const userDetails = useContext(UserContext);
     const authorized = userDetails.authorized && userDetails.username === 'admin';
-    //if (!authorized) return <Navigate to='/login' />
+    if (!authorized) return <Navigate to='/login' />
 
     const [userData, handleInputChange, reset] = useForm({
         "username": "",

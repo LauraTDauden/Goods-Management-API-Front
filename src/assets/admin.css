@@ -2,14 +2,18 @@
     margin: 1em;
 }
 
+.btnadmindelete{
+    margin-bottom: 1em;
+    width: 200px;
+}
+
 .createuser{
     border-radius: 5px;
     margin: 1em;
     padding-left: 2em;
     padding-top: 1em;
     padding-bottom: 2em;
-    outline: 2px solid rgb(115, 115, 206);
-    
+    outline: 2px solid rgb(115, 115, 206);   
 }
 
 .creatediv{
@@ -27,7 +31,3 @@
     margin-top: 1em;
 }
 
-.btnadmindelete{
-    margin-bottom: 1em;
-    width: 200px;
-}

@@ -5,7 +5,6 @@ import { ItemProvider } from './context/ItemContext';
 import { UserProvider } from './context/UserContext';
 const App = () => {
 
-
     return (
         <div>
             <UserProvider>

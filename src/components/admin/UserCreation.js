@@ -12,9 +12,10 @@ export const UserCreation = ({ userData, handleInputChange, setButton, allUsers 
             postUser(userData, isCreated);
             console.log(userData)
         }
-        if (isCreated) {
+        if (isCreated == true) {
            console.log("Created!");        
            setButton(0);
+           isCreated.current = false;
          }
     }
 

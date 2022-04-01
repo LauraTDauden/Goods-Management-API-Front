@@ -2,16 +2,14 @@ import React, { useContext, useRef, useState } from 'react';
 import { UserContext } from '../../context/UserContext';
 import { useForm } from '../../hooks/useForm';
 import { deactivateItem } from '../../services/itemService/deactivateItem';
-
-import '../../assets/iteminfo.css';
 import { useNavigate } from 'react-router';
+import '../../assets/iteminfo.css';
 
 export const ItemEditForm = ({ handleInputChange, formData, itemData, state }) => {
 
     const deactivated = useRef(false);
     const userDetails = useContext(UserContext);
     const [activeReason, setActiveReason] = useState(false);
-
     const [reasonData, handleReason] = useForm({
         "reason": ""
     });

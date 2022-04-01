@@ -94,11 +94,9 @@ export const ItemEdit = () => {
     });
 
     const [itemData, setItemData] = useState(formData);
-
     const toggleSupplier = () => {
         setAddSupplier(!addSupplier);
     }
-
     const togglePrice = () => {
         setAddPrice(!addPrice);
     }
@@ -116,7 +114,6 @@ export const ItemEdit = () => {
             navigate("/products/updated");
         }
     }
-
     return (
         <>
         {userDetails.authorized ?
@@ -136,8 +133,6 @@ export const ItemEdit = () => {
                             itemData={itemData}
                             toggleSupplier={toggleSupplier}
                         />
-
-                        {/*NEW SUPPLIER COMPONENT*/}
                         {
                             addSupplier && <NewSupplier
                                 itemData={itemData}
@@ -150,7 +145,6 @@ export const ItemEdit = () => {
                             itemData={itemData}
                             togglePrice={togglePrice}
                         />
-                        {/*NEW PRICE COMPONENT*/}
                         {
                             addPrice && <NewPrice
                                 itemData={itemData}

@@ -12,8 +12,6 @@ export const NewPrice = ({ itemData, setItemData, setAddPrice }) => {
         "end_date": ""
     })
 
-    console.log(PriceData)
-
    const prices = itemData.price_reductions;
 
     const handleSubmit = (e) => {
@@ -51,7 +49,6 @@ export const NewPrice = ({ itemData, setItemData, setAddPrice }) => {
         return validation;
     }
 
-
     const validate = () => {
         let validation = true;
         if (PriceData.reduced_price < 1 || PriceData.start_date == "" || PriceData.end_date == "") {
@@ -62,7 +59,6 @@ export const NewPrice = ({ itemData, setItemData, setAddPrice }) => {
         } 
         return validation;
     }
-
     return (
         <div>
             <h4>Associate price reduction</h4>

@@ -44,7 +44,6 @@ export const ItemCreation = () => {
     }
 
     const descError = "A description is required."
-
     const priceError = "Incorrect price format."
 
     const validate = () => {

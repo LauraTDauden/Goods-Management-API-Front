@@ -9,7 +9,6 @@ export const Login = () => {
         "password": ""
     });
 
-
     const userDetails = useContext(UserContext);
     const setUserDetails = useContext(UserDispatchContext);
 
@@ -22,7 +21,6 @@ export const Login = () => {
         }
     }
 
-    
     const login = (e) => {
         console.log(loginData)
         fetch('http://localhost:8080/login', {
@@ -50,7 +48,6 @@ export const Login = () => {
             username: "",
             authorized: false
         })
-        
     }
 
     return (
@@ -97,8 +94,6 @@ export const Login = () => {
                         Logout
                         </button>
                 </div>}
-
-
         </div>
     )
 }

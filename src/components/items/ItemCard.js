@@ -13,7 +13,6 @@ export const ItemCard = ({
     creation_date,
     creator
 }) => {
-
     const date = `${new Date(creation_date).getDate()}/${new Date(creation_date).getMonth() + 1}/${new Date(creation_date).getFullYear()}`;
     return (
         <div className="col">
@@ -38,6 +37,5 @@ export const ItemCard = ({
                 </div>
             </div>
         </div>
-
     )
 }

@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
 import { getItems } from "../services/itemService/getItems";
 
-
-
 export const useFetchItems = () => {
 
     const [state, setstate] = useState({
